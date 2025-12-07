@@ -1,2 +1,2 @@
-# selvi_furniture_be
-furniture
+# selvi-furniture-be
+selvi furniture backend
