@@ -5,7 +5,7 @@ exports.saveEnquiry = async (req, res) => {
     let conn;
     try {
         conn = await db.getConnection();
-        const { type } = req.body;
+        const { type,productMapId } = req.body;
 
         await conn.beginTransaction();
         const [enquiryResult] = await conn.query(
