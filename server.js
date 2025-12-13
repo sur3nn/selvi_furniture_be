@@ -11,9 +11,11 @@ app.use(cors());
 const productRoute = require("./routes/products")
 const enuiryRoute = require("./routes/enquiry")
 const metaRoute = require("./routes/meta")
+const homeRoute = require("./routes/home")
 app.use('/api/products',productRoute)
 app.use('/api/enquiry',enuiryRoute)
 app.use('/api/meta',metaRoute)
+app.use('/api/home',homeRoute)
 
 app.listen(port,'0.0.0.0',()=>{
     console.log(`Server running on port ${port}`,);

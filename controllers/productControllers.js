@@ -54,13 +54,13 @@ exports.addProduct = async (req, res) => {
 
         const productId = productResult.insertId;
         await conn.query(
-            `INSERT INTO tbl_category_product_mapping (categoryId, productId) VALUES (?, ?)`,
-            [categoryId, productId]
+            `INSERT INTO tbl_category_product_mapping (categoryId, productId,materialId) VALUES (?, ?, ?)`,
+            [categoryId, productId,materialId]
         );
-        await conn.query(
-            `INSERT INTO tbl_product_material_mapping (productId, materialId) VALUES (?, ?)`,
-            [productId, materialId]
-        );
+        // await conn.query(
+        //     `INSERT INTO tbl_product_material_mapping (productId, materialId) VALUES (?, ?)`,
+        //     [productId, materialId]
+        // );
 
         await conn.commit();
         res.json({ data: "successfully added" });

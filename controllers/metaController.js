@@ -1,5 +1,23 @@
 const db = require('../config/db');
 
+
+exports.addCategory = async (req, res) => {
+    let conn;
+    try {
+        const categoryName = req.body.name;
+        conn = await db.getConnection();
+        const [result] = await conn.query(`insert into tbl_category (name) values (?)`,[categoryName])
+        res.json({ data: result })
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({ data: "Failed", error: e.message })
+    }
+    finally {
+        if (conn) conn.release();
+    }
+}
+
+
 exports.getCategories = async (req, res) => {
     let conn;
     try {
